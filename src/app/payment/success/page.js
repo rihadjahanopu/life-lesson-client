@@ -10,7 +10,18 @@ export default function PaymentSuccessPage() {
   const { refreshUser } = useAuth();
 
   useEffect(() => {
+    // Stripe webhook takes a few seconds to process and update isPremium in DB.
+    // We retry refreshUser multiple times to make sure we get the updated user.
     refreshUser();
+
+    const delays = [2000, 5000, 10000]; // 2s, 5s, 10s এর পর আবার চেক করবে
+    const timers = delays.map((delay) =>
+      setTimeout(() => {
+        refreshUser();
+      }, delay)
+    );
+
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
