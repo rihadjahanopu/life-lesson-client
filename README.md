@@ -4,8 +4,6 @@
 
 **Empowering Your Learning Journey**
 
-<img src="https://via.placeholder.com/1200x300/4F46E5/FFFFFF?text=Life+Lesson+-+Empowering+Your+Learning+Journey" alt="Life Lesson Banner" style="border-radius: 12px; margin: 20px 0;" />
-
 > A modern, highly interactive, and responsive learning platform built with Next.js 16.
 
 **🔗 [Live Demo](https://your-live-demo-link-here.com)**
