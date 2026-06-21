@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     try {
       // Step 1: Use Better Auth's built-in sign-in (handles cookie automatically)
-      await api.post('/api/auth/sign-in/email', { email, password });
+      await api.post('/api/auth/sign-in/email', { email, password, rememberMe: true });
 
       // Step 2: Fetch session to get our MongoDB user data
       const { data } = await api.get('/api/auth/session');
@@ -50,6 +50,7 @@ export function AuthProvider({ children }) {
         email,
         password,
         image: photoURL || undefined,
+        rememberMe: true,
       });
 
       // Step 2: Ensure user exists in our MongoDB (creates document, sets role)
