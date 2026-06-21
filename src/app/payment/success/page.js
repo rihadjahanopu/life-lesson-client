@@ -1,28 +1,43 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Crown, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
+import api from '@/lib/axios';
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const { refreshUser } = useAuth();
+  const searchParams = useSearchParams();
+  const sessionId = searchParams.get('session_id');
 
   useEffect(() => {
-    // Stripe webhook takes a few seconds to process and update isPremium in DB.
-    // We retry refreshUser multiple times to make sure we get the updated user.
-    refreshUser();
+    const verifyPayment = async () => {
+      if (sessionId) {
+        try {
+          await api.post('/api/payment/verify-session', { sessionId });
+        } catch (error) {
+          console.error('Failed to verify session manually', error);
+        }
+      }
+      
+      // Refresh user after verification attempt
+      refreshUser();
 
-    const delays = [2000, 5000, 10000]; // 2s, 5s, 10s এর পর আবার চেক করবে
-    const timers = delays.map((delay) =>
-      setTimeout(() => {
-        refreshUser();
-      }, delay)
-    );
+      const delays = [2000, 5000, 10000]; // 2s, 5s, 10s এর পর আবার চেক করবে
+      const timers = delays.map((delay) =>
+        setTimeout(() => {
+          refreshUser();
+        }, delay)
+      );
 
-    return () => timers.forEach(clearTimeout);
-  }, []);
+      return () => timers.forEach(clearTimeout);
+    };
+
+    verifyPayment();
+  }, [sessionId, refreshUser]);
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4">
@@ -57,5 +72,13 @@ export default function PaymentSuccessPage() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[70vh] flex items-center justify-center">Loading...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }
