@@ -171,14 +171,16 @@ export default function RegisterPage() {
                 {/* Photo preview / placeholder */}
                 <div className="relative">
                   {photoPreview ? (
-                    <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-violet-500">
-                      <img src={photoPreview} alt="Preview" className="w-full h-full object-cover" />
+                    <div className="relative w-20 h-20">
+                      <div className="w-full h-full rounded-full overflow-hidden border-2 border-violet-500">
+                        <img src={photoPreview} alt="Preview" className="w-full h-full object-cover" />
+                      </div>
                       <button
                         type="button"
                         onClick={removePhoto}
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600"
+                        className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 z-10 shadow-sm"
                       >
-                        <X size={12} />
+                        <X size={14} />
                       </button>
                     </div>
                   ) : (
