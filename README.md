@@ -6,7 +6,7 @@
 
 > A modern, highly interactive, and responsive learning platform built with Next.js 16.
 
-**🔗 [Live Demo](https://your-live-demo-link-here.com)**
+**🔗 [Live Demo](https://life-lesson-client.vercel.app/)**
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?logo=next.js&style=for-the-badge)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?logo=react&style=for-the-badge)](https://react.dev/)
