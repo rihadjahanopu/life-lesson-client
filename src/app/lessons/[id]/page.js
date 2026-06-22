@@ -53,6 +53,11 @@ export default function LessonDetailsPage() {
   }, [params.id]);
 
   const handleExportPDF = () => {
+    if (lesson.accessLevel === 'premium' && !user?.isPremium) {
+      toast.error('Please upgrade to premium to download this lesson');
+      return;
+    }
+
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
     const margin = 20;
