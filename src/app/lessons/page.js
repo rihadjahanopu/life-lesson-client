@@ -28,7 +28,7 @@ export default function LessonsPage() {
           emotionalTone: emotionalTone || undefined,
           sort,
           page,
-          limit: 12,
+          limit: 6,
         });
         setLessons(data.lessons);
         setPagination(data.pagination);
@@ -120,7 +120,7 @@ export default function LessonsPage() {
 
       {/* Results */}
       {loading ? (
-        <GridSkeleton count={12} />
+        <GridSkeleton count={6} />
       ) : lessons.length > 0 ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
