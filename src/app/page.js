@@ -912,7 +912,7 @@ export default function HomePage() {
 								className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
 								<button
 									onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-									className="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-850/60 transition-colors outline-none">
+									className="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-slate-900 dark:text-white hover:bg-rose-600 dark:hover:bg-rose-600 transition-colors outline-none">
 									<span className="text-sm sm:text-base">{q}</span>
 									<ChevronDown
 										size={16}
