@@ -63,6 +63,20 @@ export default function ProfilePage() {
 		}
 	};
 
+	const handleRevokeAllSessions = async () => {
+		const toastId = toast.loading("Revoking all other sessions...");
+		try {
+			await userService.revokeAllSessions();
+			toast.success("All other sessions revoked successfully!", { id: toastId });
+			fetchSessions();
+		} catch (err) {
+			console.error(err);
+			toast.error(err.response?.data?.error || "Failed to revoke sessions", {
+				id: toastId,
+			});
+		}
+	};
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -370,20 +384,29 @@ export default function ProfilePage() {
 
 			{/* Security & Active Sessions Section */}
 			<div className="mt-8 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm p-6">
-				<div className="flex items-center gap-2 mb-6 pb-4 border-b border-gray-150 dark:border-gray-750">
-					<Activity
-						className="text-violet-500"
-						size={20}
-					/>
-					<div>
-						<h3 className="text-lg font-bold text-gray-900 dark:text-white">
-							Active Sessions &amp; Devices
-						</h3>
-						<p className="text-xs text-gray-450 dark:text-gray-400 mt-0.5">
-							Manage your active account sessions and revoke access for other
-							devices.
-						</p>
+				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-150 dark:border-gray-750">
+					<div className="flex items-center gap-2">
+						<Activity
+							className="text-violet-500"
+							size={20}
+						/>
+						<div>
+							<h3 className="text-lg font-bold text-gray-900 dark:text-white">
+								Active Sessions &amp; Devices
+							</h3>
+							<p className="text-xs text-gray-450 dark:text-gray-400 mt-0.5">
+								Manage your active account sessions and revoke access for other
+								devices.
+							</p>
+						</div>
 					</div>
+					{sessions.length > 1 && (
+						<button
+							onClick={handleRevokeAllSessions}
+							className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 dark:text-red-400 dark:bg-red-500/10 dark:hover:bg-red-500/20 rounded-xl transition-all">
+							<Trash2 size={16} /> Logout All
+						</button>
+					)}
 				</div>
 
 				{sessionsLoading ?

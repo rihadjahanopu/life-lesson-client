@@ -187,4 +187,8 @@ export const userService = {
     const { data } = await api.delete(`/api/users/sessions/${id}`);
     return data;
   },
+  revokeAllSessions: async () => {
+    const { data } = await api.delete('/api/users/sessions');
+    return data;
+  },
 };
