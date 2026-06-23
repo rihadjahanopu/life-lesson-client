@@ -296,7 +296,7 @@ export default function ProfilePage() {
 							<div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200/50 dark:border-gray-700 shadow-sm">
 								<BookOpen
 									size={24}
-									className="text-violet-500 mx-auto mb-2"
+									className="text-violet-500 dark:text-violet-500 mx-auto mb-2"
 								/>
 								<p className="text-2xl font-bold text-gray-900 dark:text-white">
 									{myLessons.length}
@@ -306,7 +306,7 @@ export default function ProfilePage() {
 							<div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200/50 dark:border-gray-700 shadow-sm">
 								<Heart
 									size={24}
-									className="text-rose-600 mx-auto mb-2"
+									className="text-rose-600 dark:text-rose-600 mx-auto mb-2"
 								/>
 								<p className="text-2xl font-bold text-gray-900 dark:text-rose-600">
 									{favorites.length}
@@ -316,7 +316,7 @@ export default function ProfilePage() {
 							<div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200/50 dark:border-gray-700 shadow-sm">
 								<Mail
 									size={24}
-									className="text-blue-500 mx-auto mb-2"
+									className="text-blue-500 dark:text-blue-500 mx-auto mb-2"
 								/>
 								<p className="text-2xl font-bold text-gray-900 dark:text-white">
 									{publicLessons.length}
