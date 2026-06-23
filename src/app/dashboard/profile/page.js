@@ -447,6 +447,18 @@ export default function ProfilePage() {
 												<span className="font-mono text-gray-500 dark:text-gray-400">
 													{s.ipAddress}
 												</span>
+												{s.createdAt && (
+													<>
+														<span className="mx-1.5 opacity-50">•</span>
+														Signed in:{" "}
+														<span className="text-gray-500 dark:text-gray-400">
+															{new Date(s.createdAt).toLocaleString(undefined, {
+																dateStyle: "medium",
+																timeStyle: "short",
+															})}
+														</span>
+													</>
+												)}
 											</p>
 										</div>
 									</div>
