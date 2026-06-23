@@ -17,6 +17,10 @@ export const metadata = {
   title: "Digital Life Lessons - Share Wisdom, Grow Together",
   description:
     "A platform to create, organize, share and discover valuable life lessons and personal growth experiences.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
