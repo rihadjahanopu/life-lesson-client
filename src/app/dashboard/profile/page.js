@@ -308,7 +308,7 @@ export default function ProfilePage() {
 									size={24}
 									className="text-rose-600 dark:text-rose-600 mx-auto mb-2"
 								/>
-								<p className="text-2xl font-bold text-gray-900 dark:text-rose-600">
+								<p className="text-2xl font-bold text-gray-900 dark:text-white">
 									{favorites.length}
 								</p>
 								<p className="text-sm text-gray-500">Total Favorites</p>
