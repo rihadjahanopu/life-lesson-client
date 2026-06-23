@@ -306,7 +306,7 @@ export default function ProfilePage() {
 							<div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200/50 dark:border-gray-700 shadow-sm">
 								<Heart
 									size={24}
-									className="text-pink-500 mx-auto mb-2"
+									className="text-rose-600 mx-auto mb-2"
 								/>
 								<p className="text-2xl font-bold text-gray-900 dark:text-rose-600">
 									{favorites.length}
